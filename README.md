@@ -1,4 +1,14 @@
-# -
+# 感谢上级提供的帮助
 SynoAPIEx接口库 v3.035
-自己编写了一个自定义控件单击开始录入指纹
-![screenshot_1](./images/指纹录入流程图.png)
+
+
+
+
+
+
+
+
+
+
+
+![default](https://user-images.githubusercontent.com/35685389/44071554-64d876ba-9fbc-11e8-8992-70151dcecd2d.png)
