@@ -1,0 +1,14 @@
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\bin\Debug\FingerPrintControl.dll
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\bin\Debug\FingerPrintControl.pdb
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\bin\Debug\TM.Library.dll
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\bin\Debug\Newtonsoft.Json.dll
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\bin\Debug\TM.Library.pdb
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\bin\Debug\Newtonsoft.Json.xml
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\obj\Debug\FingerPrintControl.csprojAssemblyReference.cache
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\obj\Debug\FingerPrintControl.FingerPrintControl.resources
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\obj\Debug\FingerPrintControl.Properties.Resources.resources
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\obj\Debug\FingerPrintControl.csproj.GenerateResource.cache
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\obj\Debug\FingerPrintControl.csproj.CoreCompileInputs.cache
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\obj\Debug\FingerPrintControl.csproj.CopyComplete
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\obj\Debug\FingerPrintControl.dll
+D:\CodeDemo\C#\FingerPrintDEMO\FingerPrintControl\obj\Debug\FingerPrintControl.pdb

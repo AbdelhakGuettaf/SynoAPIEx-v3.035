@@ -1,0 +1,8 @@
+D:\CodeDemo\C#\FingerPrintDEMO\TM.Library\bin\Debug\TM.Library.dll
+D:\CodeDemo\C#\FingerPrintDEMO\TM.Library\bin\Debug\TM.Library.pdb
+D:\CodeDemo\C#\FingerPrintDEMO\TM.Library\bin\Debug\Newtonsoft.Json.dll
+D:\CodeDemo\C#\FingerPrintDEMO\TM.Library\bin\Debug\Newtonsoft.Json.xml
+D:\CodeDemo\C#\FingerPrintDEMO\TM.Library\obj\Debug\TM.Library.csproj.CoreCompileInputs.cache
+D:\CodeDemo\C#\FingerPrintDEMO\TM.Library\obj\Debug\TM.Library.csproj.CopyComplete
+D:\CodeDemo\C#\FingerPrintDEMO\TM.Library\obj\Debug\TM.Library.dll
+D:\CodeDemo\C#\FingerPrintDEMO\TM.Library\obj\Debug\TM.Library.pdb
