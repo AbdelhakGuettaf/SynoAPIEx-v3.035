@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FingerPrintControlTest", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TM.Library", "TM.Library\TM.Library.csproj", "{B32999BF-562B-4F5A-BBC6-BF66626D4BCB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{EE6238FF-E17B-4523-A6FE-5A51CBC5FFEF}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\99366\Desktop\指纹录入流程图.png = C:\Users\99366\Desktop\指纹录入流程图.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
