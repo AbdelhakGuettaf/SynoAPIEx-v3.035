@@ -40,7 +40,7 @@
             this.btn_finger.Name = "btn_finger";
             this.btn_finger.Size = new System.Drawing.Size(75, 23);
             this.btn_finger.TabIndex = 1;
-            this.btn_finger.Text = "录入指纹";
+            this.btn_finger.Text = "Enroll fingerprint.";
             this.btn_finger.UseVisualStyleBackColor = true;
             this.btn_finger.Click += new System.EventHandler(this.btn_finger_Click);
             // 
@@ -50,7 +50,7 @@
             this.btngenchar1.Name = "btngenchar1";
             this.btngenchar1.Size = new System.Drawing.Size(75, 23);
             this.btngenchar1.TabIndex = 3;
-            this.btngenchar1.Text = "合成模板";
+            this.btngenchar1.Text = "Synthesize template";
             this.btngenchar1.UseVisualStyleBackColor = true;
             this.btngenchar1.Click += new System.EventHandler(this.btngenchar1_Click);
             // 
@@ -68,7 +68,7 @@
             this.btnmach.Name = "btnmach";
             this.btnmach.Size = new System.Drawing.Size(75, 23);
             this.btnmach.TabIndex = 3;
-            this.btnmach.Text = "比对指纹";
+            this.btnmach.Text = "Match";
             this.btnmach.UseVisualStyleBackColor = true;
             this.btnmach.Click += new System.EventHandler(this.btnmach_Click);
             // 

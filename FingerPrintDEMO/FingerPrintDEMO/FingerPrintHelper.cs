@@ -12,75 +12,82 @@ namespace FingerPrintDEMO
     public class FingerPrintHelper
     {
         /// <summary>
-        ///  连接指纹仪
+        /// Connect to scanner
         /// </summary>
         [DllImport("SynoAPIEx.dll")]
         public static extern int PSOpenDeviceEx(out IntPtr pHandle, int nDeviceType, int iCom = 1, int iBaud = 1, int nPackageSize = 2, int iDevNum = 0);
 
         /// <summary>
-        /// 检测手指获取图像
+        /// Detect fingers and capture images.
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Unicode)]
         public static extern int PSGetImage(IntPtr hHandle, int nAddr);
 
+        [DllImport("SynoAPIEx.dll", CharSet = CharSet.Unicode)]
+        public static extern int PSGetImage_Enroll(IntPtr hHandle, int nAddr);
+
         /// <summary>
-        /// 上传原始图像
+        /// Upload original image
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static extern unsafe int PSUpImage(IntPtr hHandle, int nAddr, byte* pImageData, out int pFileName);
 
         /// <summary>
-        /// 保存略缩图到本地
+        /// Save thumbnail locally
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static extern unsafe int PSImgData2BMP(byte* pImageData, string pImageFile);
 
         /// <summary>
-        /// 生成字符文件
+        /// Generate character file
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static extern unsafe int PSGenChar(IntPtr hHandle, int nAddr, int iBufferID);
 
         /// <summary>
-        /// 匹配芯片上的两个字符文件
+        /// "Match the two character files on the chip.
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static extern int PSMatch(IntPtr hHandle, int nAddr, out int iScore);
 
 
         /// <summary>
-        /// 将BufferA的字符文件与BufferB的字符文件组合，并生成模板文件
+        /// Combine the character files from BufferA and BufferB, and generate a template file.
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static extern int PSRegModule(IntPtr hHandle, int nAddr);
 
 
         /// <summary>
-        /// 将BufferA或BufferB的字符文件存储到闪存指纹库
+        /// Store the character file from BufferA or BufferB into the flash fingerprint library
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static extern int PSStoreChar(IntPtr hHandle, int nAddr, int iBufferID, int iPageID);
 
         /// <summary>
-        /// 从闪存指纹库中将模板传送到BufferA或BufferB 
+        /// Transfer the template from the flash fingerprint library to BufferA or BufferB. 
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static extern int PSLoadChar(IntPtr hHandle, int nAddr, int iBufferID, int iPageID);
 
         /// <summary>
-        /// 清除闪存指纹libaray  
+        /// Clear flash fingerprint library.  
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static extern int PSEmpty(IntPtr hHandle, int nAddr);
 
         /// <summary>
-        /// 将BufferA或BufferB中的字符文件传输到PC 
+        /// Transfer the character files from BufferA or BufferB to the PC.
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Ansi)]
         public static unsafe extern int PSUpChar(IntPtr hHandle, int nAddr, int iBufferID, byte* pTemplet, out int iTempletLength);
 
+        [DllImport("SynoAPIEx.dll", CallingConvention = CallingConvention.Winapi)]
+        public static extern int PSUpImage(IntPtr hHandle, int nAddr, byte[] pImageData, out int iImageLength);
+
+
         /// <summary>
-        /// 获取有效指纹数
+        /// Retrieve the number of valid fingerprints.
         /// </summary>
         /// <param name="hHandle"></param>
         /// <param name="nAddr"></param>
@@ -89,12 +96,17 @@ namespace FingerPrintDEMO
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Unicode)]
         public static extern int PSTemplateNum(IntPtr hHandle, int nAddr, out int iMbNum);
 
+
+        [DllImport("SynoAPIEx.dll", CharSet = CharSet.Unicode)]
+        public static extern int PSIdentify(IntPtr hHandle, int nAddr, out int iMbAddress);
+
         /// <summary>
-        /// 获取现有指纹库
+        /// Retrieve the existing fingerprint database
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Unicode)]
         public static extern int PSReadIndexTable(IntPtr hHandle, int nAddr, int nPage, out IndexTable_STATUS UserContent);
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
+ 
         public struct IndexTable_STATUS
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
@@ -125,6 +137,11 @@ namespace FingerPrintDEMO
 
             }
             return hexString;
+        }
+
+        internal static byte[] PSUpChar(IntPtr pHandle, int nAddr, int iBufferID)
+        {
+            throw new NotImplementedException();
         }
     }
 

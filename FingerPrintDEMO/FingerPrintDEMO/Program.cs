@@ -9,7 +9,7 @@ namespace FingerPrintDEMO
     static class Program
     {
         /// <summary>
-        /// 应用程序的主入口点。
+        /// Entry。
         /// </summary>
         [STAThread]
         static void Main()
