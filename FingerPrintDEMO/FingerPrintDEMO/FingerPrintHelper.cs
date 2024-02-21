@@ -51,6 +51,9 @@ namespace FingerPrintDEMO
         public static extern int PSMatch(IntPtr hHandle, int nAddr, out int iScore);
 
 
+        [DllImport("SynoAPIEx.dll",CharSet = CharSet.Ansi)]
+        public static extern int PSHighSpeedSearch(IntPtr hHandle, int nAddr, int iBufferID, int iStartPage, int iPageNum, out int iMbAddress, out int iscore);
+
         /// <summary>
         /// Combine the character files from BufferA and BufferB, and generate a template file.
         /// </summary>
@@ -100,10 +103,14 @@ namespace FingerPrintDEMO
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Unicode)]
         public static extern int PSIdentify(IntPtr hHandle, int nAddr, out int iMbAddress);
 
+        [DllImport("SynoAPIEx.dll", CharSet = CharSet.Unicode)]
+
+        public static extern int PSReadParTable(IntPtr hHandle, int nAddr, byte[] pParTable);
         /// <summary>
         /// Retrieve the existing fingerprint database
         /// </summary>
         [DllImport("SynoAPIEx.dll", CharSet = CharSet.Unicode)]
+
         public static extern int PSReadIndexTable(IntPtr hHandle, int nAddr, int nPage, out IndexTable_STATUS UserContent);
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
  

@@ -27,6 +27,8 @@ namespace FingerPrintDEMO
         /// </summary>
         int nAddr = 2;
 
+        int count;
+
         /// <summary>
         /// matching score
         /// </summary>
@@ -133,7 +135,8 @@ namespace FingerPrintDEMO
 
                 if (result == (int)ReturnValue.PS_OK)
                 {
-                    richtxt_log.AppendText("count" + incount);
+                    richtxt_log.AppendText("count " + incount + "\n");
+                    count = incount;
                 }
 
                 StartContinuousScanning();
@@ -151,11 +154,10 @@ namespace FingerPrintDEMO
 
         private unsafe void btn_finger_Click(object sender, EventArgs e)
         {
-            int n = FingerPrintHelper.PSGetImage_Enroll(pHandle, nAddr);
+            int n = FingerPrintHelper.PSGetImage(pHandle, nAddr);
             if (n == (int)ReturnValue.PS_OK)
             {
                 richtxt_log.AppendText("Scanned fingerprint successfully\n");
-                return;
                 //Generate charachter file
                 if (FingerPrintHelper.PSGenChar(pHandle, nAddr, iBufferID) == (int)ReturnValue.PS_OK)
                 {
@@ -232,45 +234,42 @@ namespace FingerPrintDEMO
         {
             if (FingerPrintHelper.PSRegModule(pHandle, nAddr) == (int)ReturnValue.PS_OK)
             {
-
                 richtxt_log.AppendText("Template synthesis successful.\n");
 
-                int count;
-
-                int result = FingerPrintHelper.PSTemplateNum(pHandle, nAddr, out count);
-
-                if (result == (int)ReturnValue.PS_OK)
-                {
-                    if (FingerPrintHelper.PSStoreChar(pHandle, nAddr, 1, count+1) == (int)ReturnValue.PS_OK)
+                if (FingerPrintHelper.PSStoreChar(pHandle, nAddr, iBufferID, 229) == (int)ReturnValue.PS_OK)
                     {
                         richtxt_log.AppendText("Template stored in flash memory library successfully\n");
-                        int nresult = FingerPrintHelper.PSTemplateNum(pHandle, nAddr, out _);
-
-                        richtxt_log.AppendText("count" + nresult);
-
-
-                        if (FingerPrintHelper.PSEmpty(pHandle, nAddr) == ReturnValue.PS_OK.ToInt())
-                        {
-                            richtxt_log.AppendText("Flash fingerprint library cleared successfully.\n");
-                        }
+                    count = count++;
                     }
-
-
-                }
             }
         }
         private unsafe void btnmach_Click(object sender, EventArgs e)
         {
+            if (FingerPrintHelper.PSGetImage(pHandle, nAddr) == (int)ReturnValue.PS_OK)
+            {
+                richtxt_log.AppendText("Scanned fingerprint successfully\n");
+                //Generate charachter file
+                if (FingerPrintHelper.PSGenChar(pHandle, nAddr, iBufferID) == (int)ReturnValue.PS_OK)
+                {
+                    if (FingerPrintHelper.PSHighSpeedSearch(pHandle, nAddr, iBufferID, 0, 232, out int iMbAdd, out int iScore)==(int)ReturnValue.PS_OK)
+                    {
 
-            
+                        richtxt_log.AppendText("Score=" + iScore.ToString() + "\n");
+                        richtxt_log.AppendText("Add=" + iMbAdd.ToString() + "\n");
+                    }
+                }
+            }
+            return;
+
             int n = FingerPrintHelper.PSGetImage(pHandle, nAddr);
+
             if (n == (int)ReturnValue.PS_OK)
             {
                 richtxt_log.AppendText("Fingerprint retrieval successful.\n");
 
-                if (FingerPrintHelper.PSGenChar(pHandle, nAddr, 1) == (int)ReturnValue.PS_OK)
+                if (FingerPrintHelper.PSGenChar(pHandle, nAddr, iBufferID) == (int)ReturnValue.PS_OK)
                 {
-                    richtxt_log.AppendText("Character file successfully filled into"+iBufferID.ToString()+".\n");
+                    richtxt_log.AppendText("Character file successfully filled into" + iBufferID.ToString() + ".\n");
 
 
                     iScore = 0;
@@ -286,12 +285,14 @@ namespace FingerPrintDEMO
                                 string hexStr = FingerPrintHelper.ToHexString(data);
 
 
-                                int f = PSIdentify(pHandle, nAddr, out int figerID);
+                                int f = PSIdentify(pHandle, nAddr, out int _);
 
 
                                 richtxt_log.AppendText(string.Format("Score{0}\n", iScore));
 
                                 richtxt_log.AppendText("FingerId=" + f.ToString());
+
+                                FingerPrintHelper.PSEmpty(pHandle, nAddr);
 
                                 return;
 
@@ -300,10 +301,6 @@ namespace FingerPrintDEMO
                                 richtxt_log.AppendText(string.Format("Score{0}\n", iScore));
                                 richtxt_log.AppendText(string.Format("{0}\n", hexStr));
 
-                                if (FingerPrintHelper.PSEmpty(pHandle, nAddr) == ReturnValue.PS_OK.ToInt())
-                                {
-                                    richtxt_log.AppendText("Flash fingerprint library cleared successfully.\n");
-                               }
                             }
                         }
 
