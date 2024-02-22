@@ -236,11 +236,11 @@ namespace FingerPrintDEMO
             {
                 richtxt_log.AppendText("Template synthesis successful.\n");
 
-                if (FingerPrintHelper.PSStoreChar(pHandle, nAddr, iBufferID, 229) == (int)ReturnValue.PS_OK)
-                    {
-                        richtxt_log.AppendText("Template stored in flash memory library successfully\n");
+                if (FingerPrintHelper.PSStoreChar(pHandle, nAddr, iBufferID, count) == (int)ReturnValue.PS_OK)
+                {
+                    richtxt_log.AppendText("Template stored in flash memory library successfully\n");
                     count = count++;
-                    }
+                }
             }
         }
         private unsafe void btnmach_Click(object sender, EventArgs e)
@@ -251,7 +251,7 @@ namespace FingerPrintDEMO
                 //Generate charachter file
                 if (FingerPrintHelper.PSGenChar(pHandle, nAddr, iBufferID) == (int)ReturnValue.PS_OK)
                 {
-                    if (FingerPrintHelper.PSHighSpeedSearch(pHandle, nAddr, iBufferID, 0, 232, out int iMbAdd, out int iScore)==(int)ReturnValue.PS_OK)
+                    if (FingerPrintHelper.PSHighSpeedSearch(pHandle, nAddr, iBufferID, 0, 232, out int iMbAdd, out int iScore) == (int)ReturnValue.PS_OK)
                     {
 
                         richtxt_log.AppendText("Score=" + iScore.ToString() + "\n");
